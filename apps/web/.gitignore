@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules/
+/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -25,18 +25,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files - ignore ALL .env files except .env.example
+# local env files - ignore all .env files
 .env
-.env.local
-.env.*.local
-!.env.example
-
-# monorepo packages env files
-packages/*/.env
-packages/*/.env.local
-
-# generated/cache files
-packages/db/geocode_cache.json
+.env*.local
 
 # vercel
 .vercel
@@ -50,8 +41,3 @@ next-env.d.ts
 .vscode/
 *.swp
 *.swo
-
-# OS
-Thumbs.db
-
-IMPLEMENTATION_PLAN.md

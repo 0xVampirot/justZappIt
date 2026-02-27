@@ -2,6 +2,17 @@
   "name": "@justzappit/db",
   "version": "1.0.0",
   "private": true,
+  "license": "AGPL-3.0-only",
+  "description": "Database scripts and migrations for justZappIt.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xVampirot/justZappIt.git",
+    "directory": "packages/db"
+  },
+  "bugs": {
+    "url": "https://github.com/0xVampirot/justZappIt/issues"
+  },
+  "author": "justZappIt Contributors",
   "scripts": {
     "seed": "tsx seed.ts"
   },

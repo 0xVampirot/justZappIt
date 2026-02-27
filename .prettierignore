@@ -1,0 +1,16 @@
+/node_modules
+/.next
+/out
+/build
+.dist
+.npm
+public/
+package-lock.json
+
+# Environment files
+.env*
+
+# IDE/OS files
+.vscode
+.idea
+.DS_Store

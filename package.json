@@ -2,6 +2,24 @@
   "name": "justzappit",
   "version": "1.0.0",
   "private": true,
+  "license": "AGPL-3.0-only",
+  "description": "A community-driven, open-source directory of physical crypto exchange shops worldwide.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xVampirot/justZappIt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0xVampirot/justZappIt/issues"
+  },
+  "homepage": "https://justzappit.xyz",
+  "author": "justZappIt Contributors",
+  "keywords": [
+    "crypto",
+    "exchange",
+    "map",
+    "directory",
+    "web3"
+  ],
   "workspaces": [
     "apps/*",
     "packages/*"
