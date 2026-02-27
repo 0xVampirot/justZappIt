@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import AdSenseScript from "@/components/AdSenseScript";
 import CookieConsent from "@/components/CookieConsent";
 import "@/styles/index.css";
@@ -89,6 +90,7 @@ export default function RootLayout({
         <main>{children}</main>
         <AdSenseScript />
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && <CookieConsent />}
+        <Analytics />
       </body>
     </html>
   );
