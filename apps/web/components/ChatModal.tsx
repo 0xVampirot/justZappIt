@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
 import { useEffect } from "react";
@@ -87,7 +88,7 @@ export default function ChatModal({ store, onClose }: ChatModalProps) {
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-md font-semibold text-button"
           >
-            Follow us on X
+            Follow us
           </a>
           <p className="text-caption text-[var(--color-text-secondary)] text-center">
             Stay up to date with the latest Zapp news and launch updates.

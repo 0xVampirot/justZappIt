@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
 import { useState, useCallback, useMemo, useEffect, Suspense } from "react";
@@ -16,7 +17,7 @@ import HelpModal from "@/components/HelpModal";
 const MapView = dynamic(() => import("@/components/map/MapView"), {
   ssr: false,
   loading: () => (
-    <div className="w-full flex items-center justify-center bg-[var(--color-surface)]" style={{ height: "100dvh" }}>
+    <div className="w-full h-dvh flex items-center justify-center bg-[var(--color-surface)]">
       <div className="flex flex-col items-center gap-3">
         <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
         <p className="text-body text-[var(--color-text-secondary)]">Loading map…</p>
@@ -92,7 +93,7 @@ function MapPageContent({ initialStores }: MapPageProps) {
 
       try {
         while (page <= totalPages) {
-          const res = await fetch(`/api/stores?page=${page}&limit=200&_t=${Date.now()}`);
+          const res = await fetch(`/api/stores?page=${page}&limit=200`);
           const json = await res.json();
 
           if (!res.ok || json.error) {
@@ -104,10 +105,8 @@ function MapPageContent({ initialStores }: MapPageProps) {
           page++;
         }
 
-        console.log("[Client Fetch] Got", allStores.length, "stores across", page - 1, "page(s)");
         setStores(allStores);
-      } catch (err) {
-        console.error("[Client Fetch] Error:", err);
+      } catch {
         setFetchError(true);
       } finally {
         setIsLoading(false);
@@ -244,7 +243,7 @@ function MapPageContent({ initialStores }: MapPageProps) {
         aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
         aria-expanded={sidebarOpen}
         className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[var(--color-bg)] border border-[var(--color-border)] rounded-r-md p-1.5 shadow-md transition-all duration-300"
-        style={{ left: sidebarOpen ? "360px" : "0px" }}
+        style={{ left: sidebarOpen ? "var(--sidebar-width)" : "0px" }}
       >
         {sidebarOpen ? (
           <ChevronLeft size={18} className="text-[var(--color-text-secondary)]" />
@@ -255,7 +254,6 @@ function MapPageContent({ initialStores }: MapPageProps) {
 
       {/* ── Map ── */}
       <main className="flex-1 relative">
-        <h1 className="sr-only">JustZappIt - Find Physical Crypto Exchanges Near You</h1>
         <MapView
           stores={filteredStores}
           selectedStore={selectedStore}

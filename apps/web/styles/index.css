@@ -1,0 +1,23 @@
+@import "./tokens.css";
+@import "./base.css";
+@import "./leaflet.css";
+@import "./marker-cluster.css";
+@import "./error-pages.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Tailwind utility layer — must be co-located with @tailwind utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

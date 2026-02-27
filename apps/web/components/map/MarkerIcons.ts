@@ -1,10 +1,7 @@
-export type MarkerStyle =
-  | "seed_confirmed"
-  | "seed_partial"
-  | "community_verified"
-  | "unverified"
-  | "flagged"
-  | "approximate";
+// SPDX-License-Identifier: AGPL-3.0-only
+import { STATUS_CONFIG, type VerificationStatus } from "@/lib/statusColors";
+
+export type MarkerStyle = VerificationStatus | "approximate";
 
 const PIN_SIZE: [number, number] = [28, 36];
 const PIN_ANCHOR: [number, number] = [14, 36];
@@ -23,16 +20,21 @@ const ICONS: Record<string, any> = {};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function createIcon(L: any, style: MarkerStyle): unknown {
-  const configs: Record<MarkerStyle, { fill: string; stroke: string; opacity?: number }> = {
-    seed_confirmed:     { fill: "#22c55e", stroke: "#16a34a" },
-    community_verified: { fill: "#3b82f6", stroke: "#1d4ed8" },
-    seed_partial:       { fill: "#facc15", stroke: "#ca8a04", opacity: 0.85 },
-    unverified:         { fill: "#facc15", stroke: "#ca8a04", opacity: 0.7 },
-    flagged:            { fill: "#f97316", stroke: "#c2410c" },
-    approximate:        { fill: "#9ca3af", stroke: "#6b7280" },
-  };
+  const APPROXIMATE_MARKER = { fill: "#9ca3af", stroke: "#6b7280", opacity: 1 };
 
-  const { fill, stroke, opacity = 1 } = configs[style];
+  if (style === "approximate") {
+    const { fill, stroke, opacity } = APPROXIMATE_MARKER;
+    return L.divIcon({
+      html: makeSvgPin(fill, stroke, opacity),
+      className: "",
+      iconSize: PIN_SIZE,
+      iconAnchor: PIN_ANCHOR,
+      popupAnchor: POPUP_ANCHOR,
+    });
+  }
+
+  const cfg = STATUS_CONFIG[style];
+  const { markerFill: fill, markerStroke: stroke, markerOpacity: opacity } = cfg;
 
   return L.divIcon({
     html: makeSvgPin(fill, stroke, opacity),

@@ -1,9 +1,11 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowLeft, MapPin, CheckCircle } from "lucide-react";
+import { inputClass } from "@/lib/classNames";
 
 const HCaptcha = dynamic(() => import("@hcaptcha/react-hcaptcha"), { ssr: false });
 
@@ -23,9 +25,6 @@ interface FormData {
   lng: number | null;
   is_approximate: boolean;
 }
-
-const inputClass =
-  "w-full border border-[var(--color-border)] rounded-md px-3 py-2 text-body bg-[var(--color-bg)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-[var(--color-text-secondary)]";
 
 function Field({
   label,
@@ -306,7 +305,7 @@ export default function AddStoreForm() {
             onChange={(e) => setHoneypot(e.target.value)}
             tabIndex={-1}
             autoComplete="off"
-            style={{ display: "none" }}
+            className="hidden"
             aria-hidden="true"
           />
 

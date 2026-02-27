@@ -1,8 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { SlidersHorizontal, X, ChevronDown } from "lucide-react";
 import type { Store } from "@/lib/database.types";
+import { inputClass } from "@/lib/classNames";
 
 export interface FilterState {
   countries: string[];
@@ -43,8 +45,14 @@ export default function FilterBar({ stores, filters, onChange }: FilterBarProps)
     return () => document.removeEventListener("keydown", handleEsc);
   }, [drawerOpen]);
 
-  const countries = [...new Set(stores.map((s) => s.country))].sort();
-  const operators = [...new Set(stores.map((s) => s.operator_name))].sort();
+  const countries = useMemo(
+    () => [...new Set(stores.map((s) => s.country))].sort(),
+    [stores]
+  );
+  const operators = useMemo(
+    () => [...new Set(stores.map((s) => s.operator_name))].sort(),
+    [stores]
+  );
 
   const activeCount = [
     filters.countries.length > 0,
@@ -84,7 +92,7 @@ export default function FilterBar({ stores, filters, onChange }: FilterBarProps)
           placeholder="Search city..."
           value={filters.citySearch}
           onChange={(e) => onChange({ ...filters, citySearch: e.target.value })}
-          className="w-full border border-[var(--color-border)] rounded-md px-3 py-2 text-body bg-[var(--color-bg)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-primary"
+          className={inputClass}
         />
       </div>
 

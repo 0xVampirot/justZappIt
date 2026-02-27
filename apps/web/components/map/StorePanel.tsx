@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -18,6 +19,8 @@ import {
 } from "lucide-react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import type { Store } from "@/lib/database.types";
+import { STATUS_CONFIG, DEFAULT_STATUS, type VerificationStatus } from "@/lib/statusColors";
+import { inputClass } from "@/lib/classNames";
 import dynamic from "next/dynamic";
 const ChatModal = dynamic(() => import("@/components/ChatModal"), { ssr: false });
 
@@ -25,15 +28,6 @@ interface StorePanelProps {
   store: Store;
   onClose: () => void;
 }
-
-const STATUS_LABELS: Record<string, { label: string; color: string }> = {
-  seed_confirmed:     { label: "Verified", color: "text-green-600" },
-  community_verified: { label: "Community Verified", color: "text-blue-600" },
-  seed_partial:       { label: "Partial Info", color: "text-yellow-600" },
-  unverified:         { label: "Unverified", color: "text-yellow-500" },
-  flagged:            { label: "Flagged", color: "text-orange-500" },
-  closed:             { label: "Closed", color: "text-gray-400" },
-};
 
 const FLAG_OPTIONS = [
   { value: "flag_closed", label: "Store is closed" },
@@ -126,7 +120,7 @@ export default function StorePanel({ store, onClose }: StorePanelProps) {
     };
   }, [showFlagMenu]);
 
-  const statusInfo = STATUS_LABELS[store.verification_status] ?? STATUS_LABELS.unverified;
+  const statusInfo = STATUS_CONFIG[store.verification_status as VerificationStatus] ?? DEFAULT_STATUS;
 
   async function vote(type: string, note?: string, token?: string) {
     const captchaToken = token ?? hcaptchaToken;
@@ -231,7 +225,7 @@ export default function StorePanel({ store, onClose }: StorePanelProps) {
               <h2 className="text-title font-bold text-[var(--color-text-primary)] leading-tight">
                 {store.operator_name}
               </h2>
-              <span className={`text-caption font-semibold ${statusInfo.color}`}>
+              <span className={`text-caption font-semibold ${statusInfo.textColor}`}>
                 {statusInfo.label}
               </span>
               {store.is_approximate && (
@@ -433,7 +427,7 @@ export default function StorePanel({ store, onClose }: StorePanelProps) {
                     onChange={(e) =>
                       setEditFields((f) => ({ ...f, [key]: e.target.value }))
                     }
-                    className="w-full border border-[var(--color-border)] rounded-md px-3 py-2 text-body bg-[var(--color-bg)] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-primary"
+                    className={inputClass}
                   />
                 </div>
               ))}

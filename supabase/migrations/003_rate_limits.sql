@@ -1,3 +1,4 @@
+-- SPDX-License-Identifier: AGPL-3.0-only
 -- ─── Rate Limits ───────────────────────────────────────────────────────────────
 
 CREATE TABLE rate_limits (

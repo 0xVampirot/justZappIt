@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import { createHash } from "crypto";
 
 export function hashIp(ip: string): string {

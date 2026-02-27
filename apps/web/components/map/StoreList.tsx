@@ -1,7 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
+import { useMemo } from "react";
 import { MapPin } from "lucide-react";
 import type { Store } from "@/lib/database.types";
+import { STATUS_CONFIG, type VerificationStatus } from "@/lib/statusColors";
 
 interface StoreListProps {
   stores: Store[];
@@ -25,28 +28,23 @@ function haversineKm(
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-const STATUS_DOT: Record<string, string> = {
-  seed_confirmed:     "bg-green-500",
-  community_verified: "bg-blue-500",
-  seed_partial:       "bg-yellow-400",
-  unverified:         "bg-yellow-300",
-  flagged:            "bg-orange-500",
-  closed:             "bg-gray-400",
-};
-
 export default function StoreList({
   stores,
   selectedStore,
   onSelectStore,
   userLocation,
 }: StoreListProps) {
-  const sorted = userLocation
-    ? [...stores].sort((a, b) => {
-        const da = haversineKm(userLocation.lat, userLocation.lng, a.lat, a.lng);
-        const db = haversineKm(userLocation.lat, userLocation.lng, b.lat, b.lng);
-        return da - db;
-      })
-    : stores;
+  const sorted = useMemo(
+    () =>
+      userLocation
+        ? [...stores].sort((a, b) => {
+            const da = haversineKm(userLocation.lat, userLocation.lng, a.lat, a.lng);
+            const db = haversineKm(userLocation.lat, userLocation.lng, b.lat, b.lng);
+            return da - db;
+          })
+        : stores,
+    [stores, userLocation]
+  );
 
   if (sorted.length === 0) {
     return (
@@ -67,7 +65,7 @@ export default function StoreList({
           ? haversineKm(userLocation.lat, userLocation.lng, store.lat, store.lng)
           : null;
         const isSelected = selectedStore?.id === store.id;
-        const dot = STATUS_DOT[store.verification_status] ?? "bg-gray-400";
+        const dot = (STATUS_CONFIG[store.verification_status as VerificationStatus]?.dotColor) ?? "bg-gray-400";
 
         return (
           <button

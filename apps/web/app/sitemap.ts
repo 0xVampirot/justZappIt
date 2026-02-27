@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import { supabase } from "@/lib/supabase";
 import type { MetadataRoute } from "next";
 
@@ -30,5 +31,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     ...storeUrls,
+    ...[
+      { url: `${appUrl}/legal/privacy`, changeFrequency: "monthly" as const, priority: 0.3 },
+      { url: `${appUrl}/legal/terms`, changeFrequency: "monthly" as const, priority: 0.3 },
+      { url: `${appUrl}/legal/disclaimer`, changeFrequency: "monthly" as const, priority: 0.3 },
+      { url: `${appUrl}/legal/content-policy`, changeFrequency: "monthly" as const, priority: 0.3 },
+    ],
   ];
 }

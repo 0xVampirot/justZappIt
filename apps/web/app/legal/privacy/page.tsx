@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 export const dynamic = "force-dynamic";
 
 export const metadata = {
@@ -43,9 +44,12 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2 className="text-[var(--color-text-primary)] mt-8">3. Cookies</h2>
+      <h2 className="text-[var(--color-text-primary)] mt-8">3. Cookies &amp; Advertising</h2>
       <p>
-        We do not use cookies for tracking or advertising. We only use local storage (which works similarly to cookies) to remember your preferences, such as whether you have already seen the introductory help modal.
+        We use local storage to remember your preferences, such as whether you have already seen the introductory help modal and your cookie consent choice.
+      </p>
+      <p>
+        If you accept advertising cookies, we display ads through Google AdSense. Google and its partners may use cookies and web beacons to serve ads based on your prior visits to this site or other websites. You can opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google Ads Settings</a>. If you decline cookies, no advertising cookies will be set and no ads will be displayed.
       </p>
 
       <h2 className="text-[var(--color-text-primary)] mt-8">4. Data Sharing and Disclosure</h2>

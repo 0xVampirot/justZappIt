@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import { getServiceClient } from "./supabase";
 
 const MAX_ACTIONS = 10;

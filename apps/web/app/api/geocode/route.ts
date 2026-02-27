@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import { NextRequest, NextResponse } from "next/server";
 
 // Simple in-memory rate limiter for geocode proxy.

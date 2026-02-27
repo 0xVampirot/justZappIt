@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
@@ -144,8 +145,7 @@ export default function MapView({
   return (
     <div
       ref={mapRef}
-      className="w-full"
-      style={{ height: "100dvh" }}
+      className="w-full h-dvh"
       aria-label="Store map"
     />
   );

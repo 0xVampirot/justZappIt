@@ -1,3 +1,4 @@
+-- SPDX-License-Identifier: AGPL-3.0-only
 -- ─── Atomic Rate Limit RPC ──────────────────────────────────────────────────
 -- Replaces the check-then-act pattern in application code with a single
 -- atomic INSERT ... ON CONFLICT ... DO UPDATE ... RETURNING, eliminating the

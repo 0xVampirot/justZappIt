@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
 export default function GlobalError({
@@ -14,15 +15,39 @@ export default function GlobalError({
           @media (prefers-color-scheme: dark) {
             :root { --color-bg: #000000; --color-text-primary: #F5F5F5; --color-text-secondary: #A0A0A0; }
           }
+          .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text-primary);
+          }
+          .error-page__content { text-align: center; }
+          .error-page__title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+          .error-page__message { color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+          .error-page__action {
+            display: inline-block;
+            background: #FF9417;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+          }
         `}</style>
       </head>
-      <body style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem", fontFamily: "Inter, sans-serif", background: "var(--color-bg)", color: "var(--color-text-primary)" }}>
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "0.75rem" }}>Something went wrong</h1>
-          <p style={{ color: "var(--color-text-secondary)", marginBottom: "1.5rem" }}>An unexpected error occurred.</p>
+      <body className="error-page">
+        <div className="error-page__content">
+          <h1 className="error-page__title">Something went wrong</h1>
+          <p className="error-page__message">An unexpected error occurred.</p>
           <button
             onClick={() => reset()}
-            style={{ background: "#FF9417", color: "white", padding: "0.75rem 1.5rem", borderRadius: "10px", fontWeight: 600, border: "none", cursor: "pointer" }}
+            className="error-page__action"
           >
             Try again
           </button>

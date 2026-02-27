@@ -1,0 +1,38 @@
+/* Design tokens — single source of truth for colors, typography, spacing */
+
+:root {
+  /* Font sizes (responsive) */
+  --font-title:    clamp(1.25rem, 4vw, 1.75rem);
+  --font-subtitle: clamp(0.875rem, 2vw, 1rem);
+  --font-body:     clamp(0.875rem, 2vw, 1rem);
+  --font-button:   clamp(0.875rem, 2vw, 1rem);
+  --font-caption:  clamp(0.6875rem, 1.5vw, 0.75rem);
+
+  /* Spacing scale (responsive) */
+  --space-xs:   clamp(0.25rem, 0.5vw, 0.375rem);
+  --space-sm:   clamp(0.5rem, 1vw, 0.625rem);
+  --space-md:   clamp(0.75rem, 1.5vw, 0.875rem);
+  --space-base: clamp(1rem, 2vw, 1.25rem);
+  --space-lg:   clamp(1.25rem, 2.5vw, 1.5rem);
+  --space-xl:   clamp(1.5rem, 3vw, 2rem);
+
+  /* Colors (light mode) */
+  --color-bg:           #FFFFFF;
+  --color-surface:      #F9F9F9;
+  --color-text-primary: #0A0A0A;
+  --color-text-secondary: #6B6B6B;
+  --color-border:       #E5E5E5;
+
+  /* Layout */
+  --sidebar-width: 360px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:             #000000;
+    --color-surface:        #111111;
+    --color-text-primary:   #F5F5F5;
+    --color-text-secondary: #A0A0A0;
+    --color-border:         #2A2A2A;
+  }
+}

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import type { Database } from "./database.types";
 import type { FilterState } from "@/components/map/FilterBar";
 

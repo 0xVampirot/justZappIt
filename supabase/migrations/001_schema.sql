@@ -1,3 +1,4 @@
+-- SPDX-License-Identifier: AGPL-3.0-only
 -- ─── Types ───────────────────────────────────────────────────────────────────
 CREATE TYPE verification_status AS ENUM (
   'seed_confirmed',

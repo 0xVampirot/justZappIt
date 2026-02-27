@@ -1,0 +1,12 @@
+/* Leaflet map container and popup overrides */
+
+.leaflet-container {
+  height: 100dvh;
+  width: 100%;
+  z-index: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}

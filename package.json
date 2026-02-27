@@ -27,6 +27,14 @@
   "scripts": {
     "dev": "npm run dev --workspace=apps/web",
     "build": "npm run build --workspace=apps/web",
+    "lint": "npm run lint --workspace=apps/web",
+    "test": "npm run test --workspace=apps/web",
+    "type-check": "npx tsc --noEmit --project apps/web/tsconfig.json",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
     "seed": "npm run seed --workspace=packages/db"
+  },
+  "devDependencies": {
+    "dotenv": "^17.3.1"
   }
 }

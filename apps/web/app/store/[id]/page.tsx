@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import type { Store } from "@/lib/database.types";
@@ -72,14 +73,17 @@ export default async function StorePage({
   const store = await getStore(params.id);
   if (!store) notFound();
 
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://justzappit.xyz";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FinancialService",
     name: store.operator_name,
-    image: `${process.env.NEXT_PUBLIC_APP_URL}/og-image.jpg`,
-    url: `${process.env.NEXT_PUBLIC_APP_URL}/store/${store.id}`,
+    image: `${appUrl}/og-image.jpg`,
+    url: `${appUrl}/store/${store.id}`,
     address: {
       "@type": "PostalAddress",
+      ...(store.street_address ? { streetAddress: store.street_address } : {}),
       addressLocality: store.city,
       addressCountry: store.country,
     },
@@ -91,6 +95,27 @@ export default async function StorePage({
     description: `Physical crypto exchange shop in ${store.city}. Accepts: ${store.accepts_crypto?.join(", ") || "Cryptocurrency"}.`,
     currenciesAccepted: store.accepts_crypto?.join(", ") || "BTC, ETH, USDT",
     paymentAccepted: "Cash",
+    ...(store.opening_hours ? { openingHours: store.opening_hours } : {}),
+    ...(store.website ? { sameAs: store.website } : {}),
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: appUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: store.operator_name,
+        item: `${appUrl}/store/${store.id}`,
+      },
+    ],
   };
 
   return (
@@ -98,6 +123,10 @@ export default async function StorePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <div className="max-w-xl mx-auto px-4 py-8">
         <div className="flex items-center gap-3 mb-6">

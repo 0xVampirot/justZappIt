@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 "use client";
 
 import { useState, useRef } from "react";
@@ -6,20 +7,12 @@ import {
   Navigation, Share2, MessageCircle, ChevronDown,
 } from "lucide-react";
 import type { Store } from "@/lib/database.types";
+import { STATUS_CONFIG, DEFAULT_STATUS, type VerificationStatus } from "@/lib/statusColors";
 import type HCaptchaType from "@hcaptcha/react-hcaptcha";
 import dynamic from "next/dynamic";
 
 const HCaptcha = dynamic(() => import("@hcaptcha/react-hcaptcha"), { ssr: false });
 const ChatModal = dynamic(() => import("@/components/ChatModal"), { ssr: false });
-
-const STATUS_LABELS: Record<string, { label: string; color: string }> = {
-  seed_confirmed:     { label: "Verified", color: "text-green-600" },
-  community_verified: { label: "Community Verified", color: "text-blue-600" },
-  seed_partial:       { label: "Partial Info", color: "text-yellow-600" },
-  unverified:         { label: "Unverified", color: "text-yellow-500" },
-  flagged:            { label: "Flagged", color: "text-orange-500" },
-  closed:             { label: "Closed", color: "text-gray-400" },
-};
 
 const FLAG_OPTIONS = [
   { value: "flag_closed", label: "Store is closed" },
@@ -38,7 +31,7 @@ export default function StorePageClient({ store }: { store: Store }) {
   const captchaRef = useRef<HCaptchaType>(null);
   const [pendingAction, setPendingAction] = useState<{ type: "vote", payload: { type: string } } | null>(null);
 
-  const statusInfo = STATUS_LABELS[store.verification_status] ?? STATUS_LABELS.unverified;
+  const statusInfo = STATUS_CONFIG[store.verification_status as VerificationStatus] ?? DEFAULT_STATUS;
 
   async function vote(type: string, token?: string) {
     const captchaToken = token ?? hcaptchaToken;
@@ -89,7 +82,7 @@ export default function StorePageClient({ store }: { store: Store }) {
         {/* Header */}
         <div>
           <h1 className="text-title font-bold text-[var(--color-text-primary)]">{store.operator_name}</h1>
-          <span className={`text-caption font-semibold ${statusInfo.color}`}>{statusInfo.label}</span>
+          <span className={`text-caption font-semibold ${statusInfo.textColor}`}>{statusInfo.label}</span>
           {store.is_approximate && (
             <span className="ml-2 text-caption text-[var(--color-text-secondary)] bg-[var(--color-bg)] px-2 py-0.5 rounded-sm">
               Approximate location

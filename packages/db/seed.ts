@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import * as XLSX from 'xlsx';
 import { createClient } from '@supabase/supabase-js';
 import * as fs from 'fs';

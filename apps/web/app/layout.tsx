@@ -1,6 +1,9 @@
+// SPDX-License-Identifier: AGPL-3.0-only
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import AdSenseScript from "@/components/AdSenseScript";
+import CookieConsent from "@/components/CookieConsent";
+import "@/styles/index.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -70,7 +73,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // verification: { google: "REAL_CODE_HERE" }, // Uncomment when Google Search Console is configured
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+    : {}),
 };
 
 export default function RootLayout({
@@ -82,6 +87,8 @@ export default function RootLayout({
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <main>{children}</main>
+        <AdSenseScript />
+        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && <CookieConsent />}
       </body>
     </html>
   );
