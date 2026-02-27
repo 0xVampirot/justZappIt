@@ -24,6 +24,7 @@
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^2.0.2",
     "@supabase/supabase-js": "^2.97.0",
+    "dotenv": "^16.4.5",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "lucide-react": "^0.575.0",
