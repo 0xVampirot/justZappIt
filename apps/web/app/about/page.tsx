@@ -99,11 +99,11 @@ export default function AboutPage() {
       </p>
       
       <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6 mt-6">
-        <h3 className="text-[var(--color-text-primary)] mb-4">Business Contact</h3>
+        <h3 className="text-[var(--color-text-primary)] mb-4">Contact Us</h3>
         <ul className="space-y-2">
           <li><strong>Email:</strong> <a href={`mailto:${businessEmail}`} className="text-primary hover:underline">{businessEmail}</a></li>
-          <li><strong>Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM PST</li>
-          <li><strong>Location:</strong> Global community project</li>
+          <li><strong>X (Twitter):</strong> <a href="https://x.com/JustZappIt" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@JustZappIt</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/0xVampirot/justZappIt" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">github.com/0xVampirot/justZappIt</a></li>
         </ul>
       </div>
 

@@ -135,7 +135,7 @@ const faqData = [
 ];
 
 export default function FAQPage() {
-  const email = process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "hello@justzappit.xyz";
+  const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@justzappit.xyz";
 
   const categories = {
     general: "General Questions",

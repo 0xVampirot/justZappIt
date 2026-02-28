@@ -9,6 +9,7 @@ export const metadata = {
 
 export default function ContactPage() {
   const businessEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@justzappit.xyz";
+  const xUrl = process.env.NEXT_PUBLIC_X_URL ?? "https://x.com/JustZappIt";
 
   return (
     <>
@@ -39,12 +40,14 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Hours</h3>
+                <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">X (Twitter)</h3>
                 <p className="text-[var(--color-text-secondary)]">
-                  Monday - Friday, 9:00 AM - 5:00 PM PST
+                  <a href={xUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    @JustZappIt
+                  </a>
                 </p>
                 <p className="text-[var(--color-text-secondary)] text-sm mt-1">
-                  Response time within 24-48 hours
+                  Quick questions and community updates
                 </p>
               </div>
 
@@ -54,7 +57,7 @@ export default function ContactPage() {
                   Global community project
                 </p>
                 <p className="text-[var(--color-text-secondary)] text-sm mt-1">
-                  Remote team serving worldwide
+                  Contributors worldwide
                 </p>
               </div>
             </div>
@@ -82,7 +85,10 @@ export default function ContactPage() {
                 Report bugs, request features, or get help using the platform
               </p>
               <p className="text-[var(--color-text-secondary)] text-sm mt-2">
-                <strong>Best contact:</strong> <a href="https://github.com/0xVampirot/justZappIt/issues" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">GitHub Issues</a>
+                <strong>Best contact:</strong> <a href="https://github.com/0xVampirot/justZappIt/issues" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">GitHub Issues</a> (preferred)
+              </p>
+              <p className="text-[var(--color-text-secondary)] text-sm mt-1">
+                <strong>Alternative:</strong> <a href={xUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">X (Twitter)</a> for quick questions
               </p>
             </div>
 
@@ -168,16 +174,16 @@ export default function ContactPage() {
             <div>
               <h3 className="text-[var(--color-text-primary)] font-semibold mb-3">Email Inquiries</h3>
               <ul className="space-y-2 text-[var(--color-text-secondary)] text-sm">
-                <li>• General questions: 24-48 hours</li>
-                <li>• Technical support: 48-72 hours</li>
-                <li>• Partnership inquiries: 3-5 business days</li>
-                <li>• Legal matters: 5-7 business days</li>
+                <li>• General questions: Usually 2-3 days</li>
+                <li>• Technical support: Use GitHub Issues for faster response</li>
+                <li>• Partnership inquiries: Please allow extra time for review</li>
+                <li>• Legal matters: Response time varies</li>
               </ul>
             </div>
             <div>
               <h3 className="text-[var(--color-text-primary)] font-semibold mb-3">Community Contributions</h3>
               <ul className="space-y-2 text-[var(--color-text-secondary)] text-sm">
-                <li>• Store submissions: Reviewed within 24 hours</li>
+                <li>• Store submissions: Reviewed as time permits</li>
                 <li>• Edit suggestions: Community-driven</li>
                 <li>• GitHub issues: Community triage</li>
                 <li>• Bug reports: Prioritized by severity</li>
@@ -191,7 +197,7 @@ export default function ContactPage() {
       <div className="mt-12 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
         <h3 className="text-blue-800 dark:text-blue-200 font-semibold mb-3">Important Notice</h3>
         <p className="text-blue-800 dark:text-blue-200 text-sm leading-relaxed">
-          JustZappIt is a community-driven project maintained by volunteers. While we strive to respond promptly to all inquiries, response times may vary. 
+          JustZappIt is a community-driven project maintained by volunteers. While we strive to respond to all inquiries, response times may vary. 
           For urgent matters related to safety or security, please contact local authorities immediately. 
           We do not provide financial, legal, or investment advice.
         </p>
