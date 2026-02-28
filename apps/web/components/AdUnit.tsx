@@ -18,11 +18,11 @@ interface AdUnitProps {
  */
 export default function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
   const adRef = useRef<HTMLModElement>(null);
-  const consent = useCookieConsent();
+  const { consent } = useCookieConsent();
   const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 
   useEffect(() => {
-    if (!clientId || !consent || !adRef.current) return;
+    if (!clientId || consent !== true || !adRef.current) return;
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});

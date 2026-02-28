@@ -8,7 +8,7 @@ export default function EnhancedFooter() {
   return (
     <footer className="bg-[var(--color-surface)] border-t border-[var(--color-border)] mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
             <h3 className="text-[var(--color-text-primary)] font-semibold mb-4">About JustZappIt</h3>
@@ -28,37 +28,15 @@ export default function EnhancedFooter() {
             </div>
           </div>
 
-          {/* Education Section */}
+          {/* Resources Section */}
           <div>
-            <h3 className="text-[var(--color-text-primary)] font-semibold mb-4">Education</h3>
+            <h3 className="text-[var(--color-text-primary)] font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/blog" className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/guides" className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
-                  Country Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="/verification" className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
-                  Safety Guide
-                </Link>
-              </li>
               <li>
                 <Link href="/faq" className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
                   FAQ
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Resources Section */}
-          <div>
-            <h3 className="text-[var(--color-text-primary)] font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
                   About Us
@@ -70,13 +48,8 @@ export default function EnhancedFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/legal/privacy" className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/terms" className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
-                  Terms of Service
+                <Link href="/verification" className="text-[var(--color-secondary)] hover:text-[var(--color-text-primary)] text-sm transition-colors">
+                  Safety Guide
                 </Link>
               </li>
             </ul>
@@ -136,12 +109,6 @@ export default function EnhancedFooter() {
                 className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
               >
                 Contribute
-              </Link>
-              <Link
-                href="/newsletter"
-                className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-              >
-                Newsletter
               </Link>
             </div>
           </div>

@@ -17,7 +17,7 @@ export default function ContactPage() {
       <p className="text-[var(--color-text-secondary)] mb-8">Last updated: February 28, 2026</p>
 
       <p>
-        We're here to help! Whether you have questions about JustZappIt, need to report an issue, or want to contribute to our community project, we'd love to hear from you.
+        We&apos;re here to help! Whether you have questions about JustZappIt, need to report an issue, or want to contribute to our community project, we&apos;d love to hear from you.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
@@ -75,7 +75,7 @@ export default function ContactPage() {
                 Report incorrect information, suggest edits, or claim your business listing
               </p>
               <p className="text-[var(--color-text-secondary)] text-sm mt-2">
-                <strong>Best contact:</strong> Email with "Store Listing" in subject
+                <strong>Best contact:</strong> Email with &quot;Store Listing&quot; in subject
               </p>
             </div>
 
@@ -98,7 +98,7 @@ export default function ContactPage() {
                 Explore partnership opportunities, API access, or collaboration
               </p>
               <p className="text-[var(--color-text-secondary)] text-sm mt-2">
-                <strong>Best contact:</strong> Email with "Partnership" in subject
+                <strong>Best contact:</strong> Email with &quot;Partnership&quot; in subject
               </p>
             </div>
 
@@ -108,7 +108,7 @@ export default function ContactPage() {
                 Privacy concerns, data requests, or legal inquiries
               </p>
               <p className="text-[var(--color-text-secondary)] text-sm mt-2">
-                <strong>Best contact:</strong> Email with "Legal" in subject
+                <strong>Best contact:</strong> Email with &quot;Legal&quot; in subject
               </p>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
       <section className="mt-16">
         <h2 className="text-[var(--color-text-primary)]">Join Our Community</h2>
         <p className="text-[var(--color-text-secondary)] mt-4">
-          JustZappIt is powered by our amazing community. Here's how you can get involved:
+          JustZappIt is powered by our amazing community. Here&apos;s how you can get involved:
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
@@ -194,9 +194,9 @@ export default function ContactPage() {
       </section>
 
       {/* Important Notice */}
-      <div className="mt-12 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-        <h3 className="text-blue-800 dark:text-blue-200 font-semibold mb-3">Important Notice</h3>
-        <p className="text-blue-800 dark:text-blue-200 text-sm leading-relaxed">
+      <div className="mt-12 p-6 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
+        <h3 className="text-[var(--color-text-primary)] font-semibold mb-3">Important Notice</h3>
+        <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
           JustZappIt is a community-driven project maintained by volunteers. While we strive to respond to all inquiries, response times may vary. 
           For urgent matters related to safety or security, please contact local authorities immediately. 
           We do not provide financial, legal, or investment advice.

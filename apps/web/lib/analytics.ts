@@ -30,7 +30,9 @@ export function initializeGA() {
 
   // Initialize gtag
   window.dataLayer = window.dataLayer || [];
+  // eslint-disable-next-line prefer-rest-params
   window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
     window.dataLayer.push(arguments);
   };
 
@@ -140,16 +142,6 @@ export const analytics = {
     });
   },
 
-  newsletterSignup: (frequency: string) => {
-    trackEvent({
-      name: 'newsletter_signup',
-      parameters: {
-        frequency: frequency,
-        content_type: 'newsletter',
-      },
-    });
-  },
-
   // Conversion events
   adClick: (adUnit: string, adFormat: string) => {
     trackEvent({
@@ -235,7 +227,6 @@ export function useAnalytics() {
       mapInteraction: () => {},
       searchQuery: () => {},
       articleView: () => {},
-      newsletterSignup: () => {},
       adClick: () => {},
       adImpression: () => {},
       error: () => {},
@@ -277,6 +268,7 @@ export function trackPerformance() {
     const fidObserver = new PerformanceObserver((list) => {
       const entries = list.getEntries();
       entries.forEach((entry) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const inputEntry = entry as any;
         trackEvent({
           name: 'fid',
@@ -293,6 +285,7 @@ export function trackPerformance() {
     let clsScore = 0;
     const clsObserver = new PerformanceObserver((list) => {
       list.getEntries().forEach((entry) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const layoutEntry = entry as any;
         if (!layoutEntry.hadRecentInput) {
           clsScore += layoutEntry.value;
@@ -312,7 +305,7 @@ export function trackPerformance() {
 
 // Session tracking
 export function trackSession() {
-  let sessionStart = Date.now();
+  const sessionStart = Date.now();
 
   // Track session duration on page unload
   const handlePageUnload = () => {
@@ -338,9 +331,7 @@ export function trackErrors() {
 }
 
 // Initialize all tracking
-export function initializeTracking() {
-  const { canTrack } = useAnalytics();
-  
+export function initializeTracking(canTrack: () => boolean) {
   if (canTrack()) {
     trackPerformance();
     trackSession();
@@ -351,7 +342,9 @@ export function initializeTracking() {
 // Type declarations for gtag
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataLayer: any[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag: (...args: any[]) => void;
   }
 }

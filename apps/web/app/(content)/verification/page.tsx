@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
@@ -7,7 +8,40 @@ export const metadata = {
   description: "Learn how JustZappIt's community verification system works, how to verify stores, and our anti-spam measures.",
 };
 
-export default function VerificationPage() {
+export default async function VerificationPage() {
+  // Fetch real stats from Supabase with error handling
+  let totalStores = 0;
+  let verifiedStores = 0;
+  let pendingStores = 0;
+  let flaggedStores = 0;
+
+  try {
+    const { count: totalCount } = await supabase
+      .from('stores')
+      .select('*', { count: 'exact', head: true });
+    totalStores = totalCount ?? 0;
+
+    const { count: verifiedCount } = await supabase
+      .from('stores')
+      .select('*', { count: 'exact', head: true })
+      .eq('verification_status', 'community_verified');
+    verifiedStores = verifiedCount ?? 0;
+
+    const { count: pendingCount } = await supabase
+      .from('stores')
+      .select('*', { count: 'exact', head: true })
+      .in('verification_status', ['unverified', 'seed_partial']);
+    pendingStores = pendingCount ?? 0;
+
+    const { count: flaggedCount } = await supabase
+      .from('stores')
+      .select('*', { count: 'exact', head: true })
+      .eq('verification_status', 'flagged');
+    flaggedStores = flaggedCount ?? 0;
+  } catch {
+    // Silently fail and use default values of 0
+  }
+
   return (
     <>
       <h1 className="text-[var(--color-text-primary)]">Store Verification Process</h1>
@@ -23,14 +57,14 @@ export default function VerificationPage() {
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6 mt-6">
           <h3 className="text-[var(--color-text-primary)] font-semibold mb-4">Community-Based Verification</h3>
           <p className="text-[var(--color-text-secondary)] mb-4">
-            Our verification system relies on community members like you to confirm the existence and legitimacy of physical cryptocurrency exchanges. Here's how it works:
+            Our verification system relies on community members like you to confirm the existence and legitimacy of physical cryptocurrency exchanges. Here&apos;s how it works:
           </p>
           
           <ol className="space-y-3 text-[var(--color-text-secondary)]">
             <li><strong>Store Submission:</strong> Anyone can submit a new store listing with basic information</li>
             <li><strong>Community Confirmation:</strong> Users who have personally visited the store can confirm its existence</li>
-            <li><strong>Verification Threshold:</strong> Stores need 3 confirmations to reach "Community Verified" status</li>
-            <li><strong>Flagging System:</strong> Users can flag stores that are closed, incorrect, or don't accept crypto</li>
+            <li><strong>Verification Threshold:</strong> Stores need 3 confirmations to reach &quot;Community Verified&quot; status</li>
+            <li><strong>Flagging System:</strong> Users can flag stores that are closed, incorrect, or don&apos;t accept crypto</li>
             <li><strong>Automatic Status Updates:</strong> Store status changes based on community feedback</li>
           </ol>
         </div>
@@ -41,7 +75,7 @@ export default function VerificationPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6">
-            <div className="w-12 h-12 bg-gray-200 rounded-full mb-4"></div>
+            <div className="w-12 h-12 bg-gray-400 rounded-full mb-4 flex items-center justify-center text-white font-bold">?</div>
             <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Unverified</h3>
             <p className="text-[var(--color-text-secondary)] text-sm">
               New store submissions with no community confirmations. Exercise caution when visiting unverified stores.
@@ -49,7 +83,7 @@ export default function VerificationPage() {
           </div>
           
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6">
-            <div className="w-12 h-12 bg-yellow-200 rounded-full mb-4"></div>
+            <div className="w-12 h-12 bg-yellow-500 rounded-full mb-4 flex items-center justify-center text-white font-bold">~</div>
             <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Pending</h3>
             <p className="text-[var(--color-text-secondary)] text-sm">
               Stores with 1-2 community confirmations. Partially verified but not yet fully confirmed.
@@ -57,7 +91,7 @@ export default function VerificationPage() {
           </div>
           
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6">
-            <div className="w-12 h-12 bg-green-200 rounded-full mb-4"></div>
+            <div className="w-12 h-12 bg-green-500 rounded-full mb-4 flex items-center justify-center text-white font-bold">✓</div>
             <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Community Verified</h3>
             <p className="text-[var(--color-text-secondary)] text-sm">
               Stores with 3+ confirmations from community members. Highest level of trust in our system.
@@ -83,16 +117,16 @@ export default function VerificationPage() {
               <strong>Check Details:</strong> Confirm that the address, phone number, and operating hours are accurate
             </li>
             <li>
-              <strong>Use the Confirm Button:</strong> On the store's page, click the "Confirm" button to submit your verification
+              <strong>Use the Confirm Button:</strong> On the store&apos;s page, click the &quot;Confirm&quot; button to submit your verification
             </li>
             <li>
-              <strong>Be Honest:</strong> Only confirm stores you've personally verified. False confirmations harm the community.
+              <strong>Be Honest:</strong> Only confirm stores you&apos;ve personally verified. False confirmations harm the community.
             </li>
           </ol>
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <p className="text-blue-800 dark:text-blue-200 text-sm">
+        <div className="mt-6 p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
+          <p className="text-[var(--color-text-secondary)] text-sm">
             <strong>Important:</strong> Only confirm stores you have personally visited and verified. Multiple false confirmations from the same IP address will be automatically flagged and may result in temporary restrictions.
           </p>
         </div>
@@ -121,8 +155,8 @@ export default function VerificationPage() {
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6">
             <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Flag Thresholds</h3>
             <ul className="space-y-2 text-[var(--color-text-secondary)] text-sm">
-              <li><strong>3 Flags:</strong> Store marked as "Flagged" - warning to users</li>
-              <li><strong>5 Flags:</strong> Store marked as "Closed" - hidden from main listings</li>
+              <li><strong>3 Flags:</strong> Store marked as &quot;Flagged&quot; - warning to users</li>
+              <li><strong>5 Flags:</strong> Store marked as &quot;Closed&quot; - hidden from main listings</li>
               <li><strong>7+ Flags:</strong> Store removed from directory entirely</li>
             </ul>
           </div>
@@ -185,7 +219,7 @@ export default function VerificationPage() {
           <ol className="space-y-3 text-[var(--color-text-secondary)]">
             <li><strong>Claim Your Listing:</strong> Contact us to claim ownership of your store listing</li>
             <li><strong>Provide Documentation:</strong> Submit business registration and proof of crypto acceptance</li>
-            <li><strong>Verified Badge:</strong> Receive a "Operator Verified" badge on your listing</li>
+            <li><strong>Verified Badge:</strong> Receive a &quot;Operator Verified&quot; badge on your listing</li>
             <li><strong>Update Information:</strong> Keep your hours, contact info, and accepted cryptocurrencies current</li>
             <li><strong>Respond to Feedback:</strong> Address community concerns and flagging issues</li>
           </ol>
@@ -200,19 +234,19 @@ export default function VerificationPage() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-primary">1,247</div>
+              <div className="text-2xl font-bold text-primary">{totalStores}</div>
               <div className="text-[var(--color-text-secondary)] text-sm">Total Stores</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-green-600">892</div>
+              <div className="text-2xl font-bold text-[var(--color-text-primary)]">{verifiedStores}</div>
               <div className="text-[var(--color-text-secondary)] text-sm">Verified</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-yellow-600">234</div>
+              <div className="text-2xl font-bold text-[var(--color-text-primary)]">{pendingStores}</div>
               <div className="text-[var(--color-text-secondary)] text-sm">Pending</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-red-600">121</div>
+              <div className="text-2xl font-bold text-[var(--color-text-primary)]">{flaggedStores}</div>
               <div className="text-[var(--color-text-secondary)] text-sm">Flagged</div>
             </div>
           </div>

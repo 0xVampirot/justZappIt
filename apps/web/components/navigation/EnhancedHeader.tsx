@@ -7,7 +7,6 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function EnhancedHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [educationDropdownOpen, setEducationDropdownOpen] = useState(false);
   const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
 
   return (
@@ -17,56 +16,19 @@ export default function EnhancedHeader() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="text-[var(--color-text-primary)] font-bold text-xl">
-              JustZappIt ⚡️
+              {/* Logo intentionally left blank - sidebar contains logo */}
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {/* Education Dropdown */}
-            <div className="relative">
-              <button
-                onMouseEnter={() => setEducationDropdownOpen(true)}
-                onMouseLeave={() => setEducationDropdownOpen(false)}
-                className="flex items-center text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors py-2"
-              >
-                Education
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              
-              {educationDropdownOpen && (
-                <div 
-                  className="absolute top-full left-0 w-48 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-lg py-2 mt-1"
-                  onMouseEnter={() => setEducationDropdownOpen(true)}
-                  onMouseLeave={() => setEducationDropdownOpen(false)}
-                >
-                  <Link
-                    href="/blog"
-                    className="block px-4 py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-border)] transition-colors"
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    href="/guides"
-                    className="block px-4 py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-border)] transition-colors"
-                  >
-                    Country Guides
-                  </Link>
-                  <Link
-                    href="/verification"
-                    className="block px-4 py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-border)] transition-colors"
-                  >
-                    Safety Guide
-                  </Link>
-                </div>
-              )}
-            </div>
-
             {/* Resources Dropdown */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => setResourcesDropdownOpen(true)}
+              onMouseLeave={() => setResourcesDropdownOpen(false)}
+            >
               <button
-                onMouseEnter={() => setResourcesDropdownOpen(true)}
-                onMouseLeave={() => setResourcesDropdownOpen(false)}
                 className="flex items-center text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors py-2"
               >
                 Resources
@@ -76,8 +38,6 @@ export default function EnhancedHeader() {
               {resourcesDropdownOpen && (
                 <div 
                   className="absolute top-full left-0 w-48 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg shadow-lg py-2 mt-1"
-                  onMouseEnter={() => setResourcesDropdownOpen(true)}
-                  onMouseLeave={() => setResourcesDropdownOpen(false)}
                 >
                   <Link
                     href="/faq"
@@ -124,33 +84,6 @@ export default function EnhancedHeader() {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-[var(--color-border)] py-4">
             <nav className="flex flex-col space-y-4">
-              <div>
-                <div className="text-[var(--color-text-primary)] font-semibold mb-2">Education</div>
-                <div className="pl-4 space-y-2">
-                  <Link
-                    href="/blog"
-                    className="block text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    href="/guides"
-                    className="block text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Country Guides
-                  </Link>
-                  <Link
-                    href="/verification"
-                    className="block text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Safety Guide
-                  </Link>
-                </div>
-              </div>
-
               <div>
                 <div className="text-[var(--color-text-primary)] font-semibold mb-2">Resources</div>
                 <div className="pl-4 space-y-2">

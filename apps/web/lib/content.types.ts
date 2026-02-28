@@ -50,12 +50,6 @@ export interface BusinessInfo {
   registrationNumber?: string;
 }
 
-export interface NewsletterSignup {
-  email: string;
-  frequency: 'weekly' | 'monthly';
-  topics: string[];
-}
-
 export interface Comment {
   id: string;
   articleId: string;

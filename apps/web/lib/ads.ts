@@ -281,7 +281,8 @@ export const adRenderer = {
   },
 
   // Push ad to AdSense
-  pushAd: (unit: AdUnit) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  pushAd: (_unit: AdUnit) => {
     if (typeof window !== 'undefined' && window.adsbygoogle) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
@@ -375,7 +376,9 @@ export function initializeAdTracking() {
 // Type declarations for AdSense
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     adsbygoogle: any[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag: (...args: any[]) => void;
   }
 }

@@ -18,12 +18,12 @@ const faqData = [
       {
         id: "2", 
         question: "Is JustZappIt free to use?",
-        answer: "Yes, JustZappIt is completely free to use. We don't charge users to search for stores, view listings, or submit information. Our project is supported by the community and optional advertising."
+        answer: "Yes, JustZappIt is completely free to use. We don&apos;t charge users to search for stores, view listings, or submit information. Our project is supported by the community and optional advertising."
       },
       {
         id: "3",
         question: "How accurate is the information on JustZappIt?",
-        answer: "Our accuracy depends on community verification. Stores marked as 'Community Verified' have been confirmed by multiple users. However, we always recommend calling ahead to verify a store's hours and current services before visiting."
+        answer: "Our accuracy depends on community verification. Stores marked as &apos;Community Verified&apos; have been confirmed by multiple users. However, we always recommend calling ahead to verify a store&apos;s hours and current services before visiting."
       },
       {
         id: "4",
@@ -38,17 +38,17 @@ const faqData = [
       {
         id: "5",
         question: "How does store verification work?",
-        answer: "Stores are verified through community voting. When users confirm a store exists and accepts crypto, it gains verification points. A store needs 3 confirmations to reach 'Community Verified' status. Similarly, stores can be flagged as closed or incorrect."
+        answer: "Stores are verified through community voting. When users confirm a store exists and accepts crypto, it gains verification points. A store needs 3 confirmations to reach &apos;Community Verified&apos; status. Similarly, stores can be flagged as closed or incorrect."
       },
       {
         id: "6",
         question: "How can I verify a store?",
-        answer: "To verify a store, visit the location in person and confirm that it actually accepts cryptocurrency. Then use the 'Confirm' button on the store's page. Only confirm stores you've personally verified."
+        answer: "To verify a store, visit the location in person and confirm that it actually accepts cryptocurrency. Then use the &apos;Confirm&apos; button on the store&apos;s page. Only confirm stores you&apos;ve personally verified."
       },
       {
         id: "7",
         question: "What if I find incorrect information?",
-        answer: "Use the 'Suggest Edit' button on the store's page to submit corrections, or use the 'Flag' feature if the store is closed or doesn't accept crypto. Edits are reviewed by the community and applied after receiving confirmations."
+        answer: "Use the &apos;Suggest Edit&apos; button on the store&apos;s page to submit corrections, or use the &apos;Flag&apos; feature if the store is closed or doesn&apos;t accept crypto. Edits are reviewed by the community and applied after receiving confirmations."
       },
       {
         id: "8",
@@ -93,7 +93,7 @@ const faqData = [
       {
         id: "14",
         question: "Is my personal information collected?",
-        answer: "We collect minimal information. Your IP address is temporarily hashed for rate limiting and spam prevention, but we never store raw IP addresses or personally identifiable information. We don't track users across websites or sell data to third parties."
+        answer: "We collect minimal information. Your IP address is temporarily hashed for rate limiting and spam prevention, but we never store raw IP addresses or personally identifiable information. We don&apos;t track users across websites or sell data to third parties."
       },
       {
         id: "15",
@@ -151,7 +151,7 @@ export default function FAQPage() {
       <p className="text-[var(--color-text-secondary)] mb-8">Last updated: February 28, 2026</p>
 
       <p>
-        Find answers to common questions about JustZappIt, cryptocurrency exchanges, safety tips, and more. Can't find what you're looking for? <a href="/contact" className="text-primary hover:underline">Contact us</a> and we'll be happy to help.
+        Find answers to common questions about JustZappIt, cryptocurrency exchanges, safety tips, and more. Can&apos;t find what you&apos;re looking for? <a href="/contact" className="text-primary hover:underline">Contact us</a> and we&apos;ll be happy to help.
       </p>
 
       {Object.entries(categories).map(([categoryKey, categoryTitle]) => (
@@ -178,7 +178,7 @@ export default function FAQPage() {
       <section className="mt-12">
         <h2 className="text-[var(--color-text-primary)]">Still Have Questions?</h2>
         <p className="text-[var(--color-text-secondary)] mt-4">
-          If you couldn't find the answer you're looking for, we're here to help:
+          If you couldn&apos;t find the answer you&apos;re looking for, we&apos;re here to help:
         </p>
         
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-6 mt-6">
@@ -187,20 +187,14 @@ export default function FAQPage() {
               <strong>Email us:</strong> <a href={`mailto:${email}`} className="text-primary hover:underline">{email}</a>
             </li>
             <li>
-              <strong>Check our guides:</strong> Browse our <a href="/guides" className="text-primary hover:underline">country-specific guides</a> for regulatory information
-            </li>
-            <li>
-              <strong>Read our blog:</strong> Visit our <a href="/blog" className="text-primary hover:underline">blog</a> for educational content and safety tips
-            </li>
-            <li>
               <strong>Join the community:</strong> Contribute to our <a href="https://github.com/0xVampirot/justZappIt" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">open-source project</a>
             </li>
           </ul>
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <p className="text-sm text-blue-800 dark:text-blue-200">
-            <strong>Important:</strong> The information provided in this FAQ is for educational purposes only and does not constitute legal, financial, or professional advice. Always consult with qualified professionals for your specific situation.
+        <div className="mt-6 p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg">
+          <p className="text-sm text-[var(--color-text-secondary)]">
+            <strong>Important:</strong> The information provided in this FAQ is for informational purposes only and does not constitute legal, financial, or professional advice. Always consult with qualified professionals for your specific situation.
           </p>
         </div>
       </section>

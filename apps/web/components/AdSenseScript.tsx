@@ -10,7 +10,7 @@ import { useCookieConsent } from "./CookieConsent";
  *  2. User has accepted cookie consent
  */
 export default function AdSenseScript() {
-  const consent = useCookieConsent();
+  const { consent } = useCookieConsent();
   const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 
   useEffect(() => {
