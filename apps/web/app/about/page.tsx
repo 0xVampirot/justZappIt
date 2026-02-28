@@ -7,9 +7,7 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "hello@justzappit.xyz";
-  const businessPhone = process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+1-555-0123";
-  const businessAddress = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ?? "123 Main St, San Francisco, CA 94102, USA";
+  const businessEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@justzappit.xyz";
 
   return (
     <>
@@ -104,9 +102,8 @@ export default function AboutPage() {
         <h3 className="text-[var(--color-text-primary)] mb-4">Business Contact</h3>
         <ul className="space-y-2">
           <li><strong>Email:</strong> <a href={`mailto:${businessEmail}`} className="text-primary hover:underline">{businessEmail}</a></li>
-          <li><strong>Phone:</strong> <a href={`tel:${businessPhone}`} className="text-primary hover:underline">{businessPhone}</a></li>
-          <li><strong>Address:</strong> {businessAddress}</li>
           <li><strong>Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM PST</li>
+          <li><strong>Location:</strong> Global community project</li>
         </ul>
       </div>
 

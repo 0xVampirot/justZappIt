@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function EnhancedFooter() {
   const currentYear = new Date().getFullYear();
-  const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "hello@justzappit.xyz";
+  const businessEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@justzappit.xyz";
 
   return (
     <footer className="bg-[var(--color-surface)] border-t border-[var(--color-border)] mt-auto">

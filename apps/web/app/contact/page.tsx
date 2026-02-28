@@ -8,9 +8,7 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "hello@justzappit.xyz";
-  const businessPhone = process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+1-555-0123";
-  const businessAddress = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ?? "123 Main St, San Francisco, CA 94102, USA";
+  const businessEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@justzappit.xyz";
 
   return (
     <>
@@ -41,24 +39,22 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Phone</h3>
+                <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Hours</h3>
                 <p className="text-[var(--color-text-secondary)]">
-                  <a href={`tel:${businessPhone}`} className="text-primary hover:underline">
-                    {businessPhone}
-                  </a>
+                  Monday - Friday, 9:00 AM - 5:00 PM PST
                 </p>
                 <p className="text-[var(--color-text-secondary)] text-sm mt-1">
-                  Monday - Friday, 9:00 AM - 5:00 PM PST
+                  Response time within 24-48 hours
                 </p>
               </div>
 
               <div>
-                <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Mailing Address</h3>
+                <h3 className="text-[var(--color-text-primary)] font-semibold mb-2">Location</h3>
                 <p className="text-[var(--color-text-secondary)]">
-                  {businessAddress}
+                  Global community project
                 </p>
                 <p className="text-[var(--color-text-secondary)] text-sm mt-1">
-                  For official correspondence and legal matters
+                  Remote team serving worldwide
                 </p>
               </div>
             </div>
