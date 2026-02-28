@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import AdSenseScript from "@/components/AdSenseScript";
 import CookieConsent from "@/components/CookieConsent";
+import EnhancedHeader from "@/components/navigation/EnhancedHeader";
+import EnhancedFooter from "@/components/navigation/EnhancedFooter";
 import "@/styles/index.css";
 
 const inter = Inter({
@@ -86,8 +88,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="font-sans antialiased" suppressHydrationWarning>
-        <main>{children}</main>
+      <body className="font-sans antialiased flex flex-col min-h-screen" suppressHydrationWarning>
+        <EnhancedHeader />
+        <main className="flex-1">{children}</main>
+        <EnhancedFooter />
         <AdSenseScript />
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && <CookieConsent />}
         <Analytics />

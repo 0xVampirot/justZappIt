@@ -48,6 +48,30 @@ export default function PrivacyPage() {
       <p>
         We use local storage to remember your preferences, such as whether you have already seen the introductory help modal and your cookie consent choice.
       </p>
+      <h3 className="text-[var(--color-text-primary)] mt-6">Google AdSense and Advertising</h3>
+      <p>
+        This site uses Google AdSense to display advertisements. Google AdSense uses cookies and web beacons to serve ads based on your prior visits to this website or other websites.
+      </p>
+      <p>
+        Google may use cookies to collect information about your visits to this and other websites in order to provide advertisements about goods and services of interest to you. You can opt out of personalized advertising by visiting <a href="https://www.google.com/ads/preferences/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Ads Settings</a>. Alternatively, you can opt out of a third-party vendor&apos;s use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.aboutads.info</a>.
+      </p>
+      <p>
+        We participate in the IAB Europe Transparency and Consent Framework and comply with its Specifications and Policies. We work with advertising partners who may collect information on your use of this website across different devices and browsers. This information may be used to build a profile of your interests and show you relevant adverts on other websites.
+      </p>
+      <h3 className="text-[var(--color-text-primary)] mt-6">Third-Party Advertising Partners</h3>
+      <p>
+        We work with the following advertising partners:
+      </p>
+      <ul>
+        <li><strong>Google AdSense:</strong> Uses the DoubleClick cookie to serve more relevant ads across the web and limit the number of times a given ad is shown to you.</li>
+        <li><strong>Google Analytics:</strong> Uses cookies to analyze how visitors use this website and provide reports on website activity.</li>
+      </ul>
+      <p>
+        For more information about Google&apos;s privacy practices and your choices, please see the <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google Advertising Privacy Policy</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google Privacy Policy</a>.
+      </p>
+      <p>
+        Our privacy policy includes a link to <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">How Google uses data when you use our partners&apos; sites or apps</a>.
+      </p>
       <p>
         If you accept advertising cookies, we display ads through Google AdSense. Google and its partners may use cookies and web beacons to serve ads based on your prior visits to this site or other websites. You can opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google Ads Settings</a>. If you decline cookies, no advertising cookies will be set and no ads will be displayed.
       </p>
