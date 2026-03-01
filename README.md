@@ -1,8 +1,10 @@
-# JustZappIt ⚡️
+# JustZappIt
 
 A community-driven, open-source directory of physical crypto exchange shops worldwide. Find trusted locations to safely trade BTC, ETH, USDT, and other cryptocurrencies for cash near you.
 
 Live at: **[justzappit.xyz](https://justzappit.xyz)**
+
+**Part of the [Zapp](https://github.com/Zapp) ecosystem.**
 
 ---
 
